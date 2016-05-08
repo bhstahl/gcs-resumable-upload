@@ -156,7 +156,7 @@ Upload.prototype.startUploading = function () {
 
       self.emit('metadata', body)
 
-      if (resp.statusCode < 200 || resp.statusCode > 299) {
+      if (resp.statusCode !== 200 && resp.statusCode !== 308) {
         self.destroy(new Error('Upload failed'))
         return
       }
